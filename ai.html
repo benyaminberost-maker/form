@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BEROST ALIENCLAN</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Tahoma,Arial,sans-serif;
+background:
+radial-gradient(circle at 15% 10%,rgba(0,220,255,.18),transparent 30%),
+radial-gradient(circle at 85% 15%,rgba(255,60,20,.15),transparent 30%),
+linear-gradient(145deg,#010208,#08131e,#080305);
+color:#eef7ff;
+min-height:100vh
+}
+
+.wrap{
+width:min(1100px,94%);
+margin:auto;
+padding:25px 0 60px
+}
+
+.hero{
+text-align:center;
+padding:20px
+}
+
+.logo{
+font-size:clamp(32px,7vw,65px);
+font-weight:900;
+letter-spacing:4px;
+text-shadow:0 0 15px #00eaff,0 0 35px rgba(255,60,20,.3)
+}
+
+.logo span{
+background:linear-gradient(90deg,#6ff7ff,#fff,#ff4b25);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent
+}
+
+.sub{
+color:#9badc0;
+margin-top:10px
+}
+
+.panel{
+background:rgba(7,15,25,.9);
+border:1px solid rgba(80,220,255,.25);
+border-radius:22px;
+padding:25px;
+margin-top:20px;
+box-shadow:0 0 40px rgba(0,0,0,.5)
+}
+
+h2{
+color:#8df7ff
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px
+}
+
+label{
+display:block;
+color:#aebdce;
+font-size:14px;
+margin-bottom:7px
+}
+
+input,select,textarea{
+width:100%;
+padding:13px;
+border-radius:12px;
+border:1px solid #294157;
+background:#040a12;
+color:white;
+outline:none;
+font:inherit
+}
+
+input:focus,select:focus,textarea:focus{
+border-color:#38eaff;
+box-shadow:0 0 15px rgba(0,220,255,.12)
+}
+
+.question{
+padding:16px;
+border:1px solid #223548;
+border-radius:14px;
+margin:12px 0;
+background:rgba(2,7,13,.7)
+}
+
+.option{
+display:block;
+padding:8px;
+cursor:pointer
+}
+
+.option input{
+width:auto;
+margin-left:8px
+}
+
+button,.btn{
+border:0;
+border-radius:12px;
+padding:13px 18px;
+font-weight:bold;
+cursor:pointer;
+text-decoration:none;
+display:inline-block
+}
+
+.primary{
+background:linear-gradient(100deg,#43edff,#c8ffff,#ff6946);
+color:#03100d
+}
+
+.secondary{
+background:#101a27;
+color:#dbeaff;
+border:1px solid #30455b
+}
+
+.actions{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:18px
+}
+
+.notice{
+color:#ffe08a;
+background:rgba(255,210,70,.06);
+border:1px solid rgba(255,210,70,.2);
+padding:12px;
+border-radius:12px;
+margin-top:15px
+}
+
+.result{
+display:none
+}
+
+.result.show{
+display:block
+}
+
+.status{
+font-size:28px;
+font-weight:900;
+color:#7dffff
+}
+
+.score{
+font-size:18px;
+color:#b9c8d9;
+margin:10px 0
+}
+
+.paper{
+background:white;
+color:#111;
+padding:25px;
+border-radius:14px;
+margin-top:20px
+}
+
+.paper table{
+width:100%;
+border-collapse:collapse
+}
+
+.paper td{
+border-bottom:1px solid #ddd;
+padding:9px
+}
+
+.chat-box{
+height:400px;
+overflow-y:auto;
+padding:15px;
+border:1px solid #24384e;
+border-radius:16px;
+background:#02060c
+}
+
+.msg{
+max-width:86%;
+padding:12px 14px;
+border-radius:14px;
+margin:10px 0;
+line-height:1.8;
+white-space:pre-wrap;
+word-break:break-word
+}
+
+.msg.ai{
+margin-right:0;
+margin-left:auto;
+background:rgba(0,180,255,.1);
+border:1px solid rgba(80,220,255,.2)
+}
+
+.msg.user{
+margin-left:0;
+margin-right:auto;
+background:rgba(255,70,35,.1);
+border:1px solid rgba(255,90,50,.2)
+}
+
+.chat-row{
+display:flex;
+gap:10px;
+margin-top:12px
+}
+
+.chat-row textarea{
+flex:1;
+min-height:55px;
+resize:vertical
+}
+
+.links{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px
+}
+
+.linkbox{
+padding:15px;
+border-radius:14px;
+background:#050b12;
+border:1px solid #294056
+}
+
+.linkbox a{
+color:#68ffe0;
+word-break:break-all
+}
+
+@media(max-width:700px){
+.grid,.links{
+grid-template-columns:1fr
+}
+.panel{
+padding:18px
+}
+}
+
+@media print{
+body{
+background:white;
+color:#111
+}
+
+.hero,
+.form-panel,
+.ai-panel,
+.after{
+display:none!important
+}
+
+.result{
+display:block!important
+}
+
+.paper{
+box-shadow:none
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<header class="hero">
+<div class="logo">
+BEROST <span>ALIENCLAN</span>
+</div>
+
+<div class="sub">
+فرم رسمی درخواست عضویت کلن Minecraft
+</div>
+</header>
+
+
+<section class="panel form-panel">
+
+<h2>◈ مشخصات بازیکن</h2>
+
+<div class="grid">
+
+<div>
+<label>نام و نام خانوادگی</label>
+<input id="name" placeholder="مثلاً بنیامین برست">
+</div>
+
+<div>
+<label>نام گیمینگ</label>
+<input id="nick" placeholder="مثلاً Berost">
+</div>
+
+<div>
+<label>سابقه بازی</label>
+<input id="experience" placeholder="مثلاً ۳ سال">
+</div>
+
+<div>
+<label>استعداد / مهارت</label>
+<input id="talent" placeholder="PvP، ساختمان‌سازی، Redstone و...">
+</div>
+
+<div>
+<label>سن</label>
+<input id="age" type="number" min="10" max="99">
+</div>
+
+<div>
+<label>نسخه Minecraft</label>
+
+<select id="version">
+<option>Java Edition</option>
+<option>Bedrock Edition</option>
+<option>هر دو</option>
+</select>
+
+</div>
+
+</div>
+
+
+<h2>◈ آزمون Minecraft</h2>
+
+<div id="questions"></div>
+
+<div class="notice">
+برای قبولی حداقل ۶ پاسخ از ۱۰ پاسخ باید درست باشد.
+</div>
+
+<div class="actions">
+
+<button class="primary" onclick="submitForm()">
+ثبت فرم و مشاهده نتیجه
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= AI ================= -->
+
+<section class="panel ai-panel">
+
+<h2>◈ BEROST ALIEN AI</h2>
+
+<div class="chat-box" id="chatBox">
+
+<div class="msg ai">
+سلام! 👽🔥❄️
+
+من دستیار BEROST ALIENCLAN هستم.
+
+درباره سایت، فرم عضویت، آزمون، Minecraft، کلن یا Microsoft Teams هر سؤالی داری بپرس.
+</div>
+
+</div>
+
+
+<div class="chat-row">
+
+<textarea
+id="chatInput"
+placeholder="سؤالت را بنویس..."
+></textarea>
+
+<button
+class="primary"
+onclick="sendAI()"
+id="sendAI">
+ارسال 🚀
+</button>
+
+</div>
+
+
+<div class="actions">
+
+<button
+class="secondary"
+onclick="askAI('این سایت چه امکاناتی دارد؟')">
+راهنمای سایت
+</button>
+
+<button
+class="secondary"
+onclick="askAI('آزمون Minecraft را توضیح بده.')">
+راهنمای آزمون
+</button>
+
+<button
+class="secondary"
+onclick="askAI('درباره Minecraft راهنمایی کن.')">
+راهنمای Minecraft
+</button>
+
+<button
+class="secondary"
+onclick="clearChat()">
+پاک کردن چت
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= RESULT ================= -->
+
+<section class="panel result" id="result">
+
+<div id="status" class="status"></div>
+
+<div id="score" class="score"></div>
+
+
+<div class="paper">
+
+<h3>
+BEROST ALIENCLAN — APPLICATION REPORT
+</h3>
+
+<table>
+
+<tr>
+<td><b>نام:</b></td>
+<td id="pName"></td>
+</tr>
+
+<tr>
+<td><b>نام گیمینگ:</b></td>
+<td id="pNick"></td>
+</tr>
+
+<tr>
+<td><b>سابقه:</b></td>
+<td id="pExp"></td>
+</tr>
+
+<tr>
+<td><b>استعداد:</b></td>
+<td id="pTalent"></td>
+</tr>
+
+<tr>
+<td><b>سن:</b></td>
+<td id="pAge"></td>
+</tr>
+
+<tr>
+<td><b>نسخه:</b></td>
+<td id="pVersion"></td>
+</tr>
+
+<tr>
+<td><b>نمره:</b></td>
+<td id="pScore"></td>
+</tr>
+
+<tr>
+<td><b>وضعیت:</b></td>
+<td id="pStatus"></td>
+</tr>
+
+</table>
+
+</div>
+
+
+<div class="actions after">
+
+<button
+class="primary"
+onclick="window.print()">
+🖨 چاپ / PDF
+</button>
+
+<button
+class="secondary"
+onclick="copyReport()">
+📋 کپی گزارش
+</button>
+
+<a
+class="secondary btn"
+href="https://teams.microsoft.com/l/chat/48%3Anotes/conversations?context=%7B%22contextType%22%3A%22chat%22%7D"
+target="_blank">
+💬 ارسال به مالک
+</a>
+
+<a
+class="secondary btn"
+href="https://teams.live.com/l/invite/FEA6iyJw6lUf1pB_w"
+target="_blank">
+👥 ورود به گروه
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ================= TEAMS ================= -->
+
+<section class="panel after">
+
+<h2>◈ Microsoft Teams</h2>
+
+<div class="links">
+
+<div class="linkbox">
+<b>Windows</b><br>
+<a
+href="https://apps.microsoft.com/detail/xp8bt8dw290mpq"
+target="_blank">
+Microsoft Store
+</a>
+</div>
+
+<div class="linkbox">
+<b>Android</b><br>
+<a
+href="https://play.google.com/store/apps/details?id=com.microsoft.teams"
+target="_blank">
+Google Play
+</a>
+</div>
+
+<div class="linkbox">
+<b>iPhone / iPad</b><br>
+<a
+href="https://apps.apple.com/app/microsoft-teams/id1113153706"
+target="_blank">
+App Store
+</a>
+</div>
+
+<div class="linkbox">
+<b>Web</b><br>
+<a
+href="https://teams.microsoft.com/"
+target="_blank">
+Teams Web
+</a>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   MINECRAFT QUESTIONS
+========================================================= */
+
+const qs=[
+
+[
+"کدام وسیله برای ساخت میز کار لازم است؟",
+["چوب","سنگ","آهن","الماس"],
+0
+],
+
+[
+"کدام موجود معمولاً در شب ظاهر می‌شود؟",
+["گاو","زامبی","گوسفند","مرغ"],
+1
+],
+
+[
+"برای ساخت شمشیر آهنی چه چیزی لازم است؟",
+["۲ آهن + چوب","۳ آهن","۱ آهن + ۲ چوب","۴ آهن"],
+0
+],
+
+[
+"کدام ابزار برای استخراج الماس مناسب است؟",
+["کلنگ چوبی","کلنگ سنگی","کلنگ آهنی یا بهتر","بیل"],
+2
+],
+
+[
+"نام دنیای اصلی Minecraft چیست؟",
+["Nether","Overworld","The End","Void"],
+1
+],
+
+[
+"کدام موجود در Nether پیدا می‌شود؟",
+["Blaze","Cow","Wolf","Villager"],
+0
+],
+
+[
+"برای خوابیدن در تخت چه چیزهایی لازم است؟",
+["چوب و پشم","سنگ و آهن","الماس و چوب","شن و شیشه"],
+0
+],
+
+[
+"برای روشن کردن Nether Portal از چه چیزی استفاده می‌شود؟",
+["Bucket","Flint and Steel","Compass","Clock"],
+1
+],
+
+[
+"کدام موجود می‌تواند منفجر شود؟",
+["Creeper","Pig","Horse","Sheep"],
+0
+],
+
+[
+"برای ساخت Pickaxe آهنی چه چیزی لازم است؟",
+["۳ آهن + ۲ چوب","۲ آهن + ۳ چوب","۱ آهن + ۱ چوب","۵ آهن"],
+0
+]
+
+];
+
+
+const qbox=document.getElementById("questions");
+
+
+qs.forEach((q,i)=>{
+
+let d=document.createElement("div");
+
+d.className="question";
+
+d.innerHTML=
+"<b>"+(i+1)+". "+q[0]+"</b>"+
+q[1].map((x,j)=>
+`
+<label class="option">
+<input
+type="radio"
+name="q${i}"
+value="${j}">
+${x}
+</label>
+`
+).join("");
+
+qbox.appendChild(d);
+
+});
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+const SAVE_KEY="berost_alienclan_application";
+
+let finalReport="";
+
+
+function val(id){
+
+return document
+.getElementById(id)
+.value
+.trim() || "ثبت نشده";
+
+}
+
+
+function submitForm(){
+
+let answered=0;
+let score=0;
+
+
+qs.forEach((q,i)=>{
+
+let a=document.querySelector(
+`input[name="q${i}"]:checked`
+);
+
+if(a){
+
+answered++;
+
+if(+a.value===q[2]){
+score++;
+}
+
+}
+
+});
+
+
+if(answered<10){
+
+alert("لطفاً به هر ۱۰ سؤال پاسخ بده.");
+
+return;
+
+}
+
+
+let passed=score>=6;
+
+
+document.getElementById("status").textContent=
+passed
+?"🎉 استخدام شدید!"
+:"⚠️ نیاز به بررسی مالک";
+
+
+document.getElementById("score").textContent=
+"نمره شما: "+score+" از 10";
+
+
+document.getElementById("pName").textContent=val("name");
+document.getElementById("pNick").textContent=val("nick");
+document.getElementById("pExp").textContent=val("experience");
+document.getElementById("pTalent").textContent=val("talent");
+document.getElementById("pAge").textContent=val("age");
+document.getElementById("pVersion").textContent=val("version");
+
+document.getElementById("pScore").textContent=
+score+"/10";
+
+
+document.getElementById("pStatus").textContent=
+passed
+?"استخدام شدید"
+:"نیاز به بررسی مالک";
+
+
+document.getElementById("result")
+.classList.add("show");
+
+
+finalReport=
+`BEROST ALIENCLAN
+
+نام: ${val("name")}
+نام گیمینگ: ${val("nick")}
+سابقه: ${val("experience")}
+استعداد: ${val("talent")}
+سن: ${val("age")}
+نسخه: ${val("version")}
+نمره: ${score}/10
+وضعیت: ${passed?"استخدام شدید":"نیاز به بررسی مالک"}`;
+
+
+localStorage.setItem(
+SAVE_KEY,
+JSON.stringify({
+
+name:val("name"),
+nick:val("nick"),
+experience:val("experience"),
+talent:val("talent"),
+age:val("age"),
+version:val("version"),
+score:score,
+passed:passed,
+report:finalReport
+
+})
+);
+
+
+document
+.getElementById("result")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+function copyReport(){
+
+if(!finalReport)return;
+
+navigator.clipboard
+.writeText(finalReport)
+.then(()=>{
+alert("گزارش کپی شد.");
+});
+
+}
+
+
+/* =========================================================
+   BEROST AI
+   فقط این دو مقدار را خودت عوض کن
+========================================================= */
+
+const API_KEY="sk-afi4KuYNyE3v4PwK1RBdCqzFDzrU3v84SpDReCEAeOR7QOto";
+
+/*
+مدل داخل کد قرار دارد.
+کاربر هیچ نام مدلی وارد نمی‌کند.
+*/
+
+const MODEL="gpt-4o-mini";
+
+const API_URL=
+"https://api.gapgpt.app/v1/chat/completions";
+
+
+/* =========================================================
+   KNOWLEDGE
+========================================================= */
+
+const SITE_KNOWLEDGE=`
+
+تو BEROST ALIEN AI هستی؛
+دستیار رسمی سایت BEROST ALIENCLAN.
+
+نام سایت:
+BEROST ALIENCLAN
+
+هدف:
+استخدام بازیکنان برای کلن Minecraft.
+
+ظاهر:
+Alienware / Dell Gaming
+فضای کیهانی
+Minecraft
+یخ و آتش
+نور نئونی.
+
+فرم سایت شامل:
+
+نام و نام خانوادگی
+نام گیمینگ
+سابقه بازی
+استعداد یا مهارت
+سن
+نسخه Minecraft
+
+آزمون شامل ۱۰ سؤال Minecraft است.
+
+حداقل نمره قبولی:
+۶ از ۱۰
+
+اگر نمره ۶ یا بیشتر باشد:
+استخدام شدید!
+
+اگر کمتر از ۶ باشد:
+نیاز به بررسی مالک
+
+گزارش شامل اطلاعات کاربر،
+نمره و وضعیت استخدام است.
+
+گزارش را می‌توان چاپ کرد
+یا به PDF تبدیل کرد
+یا برای مالک ارسال کرد.
+
+گروه کلن:
+
+https://teams.live.com/l/invite/FEA6iyJw6lUf1pB_w
+
+مالک:
+
+https://teams.microsoft.com/l/chat/48%3Anotes/conversations?context=%7B%22contextType%22%3A%22chat%22%7D
+
+Microsoft Teams Windows:
+
+https://apps.microsoft.com/detail/xp8bt8dw290mpq
+
+Microsoft Teams Android:
+
+https://play.google.com/store/apps/details?id=com.microsoft.teams
+
+Microsoft Teams iOS:
+
+https://apps.apple.com/app/microsoft-teams/id1113153706
+
+Microsoft Teams Web:
+
+https://teams.microsoft.com/
+
+به سؤالات کاربر درباره سایت،
+فرم،
+آزمون،
+Minecraft،
+کلن،
+Microsoft Teams
+و امکانات سایت پاسخ بده.
+
+پاسخ‌ها را فارسی و ساده بده.
+
+اگر سؤال درباره Minecraft بود،
+می‌توانی راهنمای کامل ارائه کنی.
+
+اطلاعات ساختگی ایجاد نکن.
+`;
+
+
+/* =========================================================
+   AI CHAT
+========================================================= */
+
+function addMessage(text,type){
+
+const box=document.getElementById("chatBox");
+
+const d=document.createElement("div");
+
+d.className="msg "+type;
+
+d.textContent=text;
+
+box.appendChild(d);
+
+box.scrollTop=box.scrollHeight;
+
+return d;
+
+}
+
+
+function askAI(text){
+
+document.getElementById("chatInput").value=text;
+
+sendAI();
+
+}
+
+
+function clearChat(){
+
+document.getElementById("chatBox").innerHTML=
+`
+<div class="msg ai">
+چت پاک شد. 👽
+سؤال جدیدت را بپرس!
+</div>
+`;
+
+}
+
+
+/* =========================================================
+   SEND AI
+========================================================= */
+
+async function sendAI(){
+
+const input=
+document.getElementById("chatInput");
+
+const text=input.value.trim();
+
+if(!text)return;
+
+
+/*
+کاربر هیچ API Key نمی‌بیند.
+کلید از همین کد استفاده می‌شود.
+*/
+
+if(
+!API_KEY ||
+API_KEY==="API_KEY_خودت_را_اینجا_بگذار"
+){
+
+alert(
+"اول API Key را داخل کد، در قسمت API_KEY قرار بده."
+);
+
+return;
+
+}
+
+
+addMessage(text,"user");
+
+input.value="";
+
+
+const typing=
+addMessage(
+"در حال فکر کردن...",
+"ai"
+);
+
+
+const formData={
+
+name:val("name"),
+nick:val("nick"),
+experience:val("experience"),
+talent:val("talent"),
+age:val("age"),
+version:val("version")
+
+};
+
+
+try{
+
+const response=
+await fetch(API_URL,{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":
+"application/json",
+
+"Authorization":
+"Bearer "+API_KEY
+
+},
+
+body:JSON.stringify({
+
+/*
+مهم:
+مدل اینجا حتماً ارسال می‌شود.
+کاربر نیازی به وارد کردن مدل ندارد.
+*/
+
+model:MODEL,
+
+messages:[
+
+{
+role:"system",
+content:
+SITE_KNOWLEDGE+
+"\n\nاطلاعات فعلی فرم کاربر:\n"+
+JSON.stringify(formData)
+},
+
+{
+role:"user",
+content:text
+}
+
+],
+
+temperature:0.5
+
+})
+
+});
+
+
+const raw=await response.text();
+
+
+let data;
+
+try{
+
+data=JSON.parse(raw);
+
+}
+
+catch(e){
+
+throw new Error(
+"پاسخ API قابل خواندن نیست:\n"+
+raw.slice(0,500)
+);
+
+}
+
+
+if(!response.ok){
+
+throw new Error(
+
+data?.error?.message ||
+data?.message ||
+"HTTP "+response.status
+
+);
+
+}
+
+
+const answer=
+data?.choices?.[0]?.message?.content;
+
+
+if(!answer){
+
+throw new Error(
+"API پاسخ متنی برنگرداند."
+);
+
+}
+
+
+typing.textContent=answer;
+
+
+}
+catch(error){
+
+typing.textContent=
+"خطا در اتصال به هوش مصنوعی:\n\n"+
+error.message;
+
+}
+
+}
+
+
+/* =========================================================
+   ENTER
+========================================================= */
+
+document
+.getElementById("chatInput")
+.addEventListener(
+"keydown",
+function(e){
+
+if(
+e.key==="Enter" &&
+!e.shiftKey
+){
+
+e.preventDefault();
+
+sendAI();
+
+}
+
+}
+);
+
+
+/* =========================================================
+   LOAD SAVED FORM
+========================================================= */
+
+window.addEventListener(
+"load",
+()=>{
+
+try{
+
+const s=
+JSON.parse(
+localStorage.getItem(SAVE_KEY)||"null"
+);
+
+if(s){
+
+[
+"name",
+"nick",
+"experience",
+"talent",
+"age",
+"version"
+]
+.forEach(id=>{
+
+if(s[id]!==undefined){
+
+document
+.getElementById(id)
+.value=s[id];
+
+}
+
+});
+
+}
+
+}
+catch(e){}
+
+}
+);
+
+</script>
+
+</body>
+</html>
